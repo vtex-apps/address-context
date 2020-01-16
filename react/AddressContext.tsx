@@ -1,20 +1,28 @@
 import React, { createContext, ReactNode, useContext } from 'react'
+import { Address } from 'vtex.checkout-graphql'
 
 interface Context {
-  countries: String[]
+  countries: string[]
+  address: Address
 }
 
 interface AddressContextProps {
   children: ReactNode
+  address: Address
+  countries: string[]
 }
 
 const AddressContextContext = createContext<Context | undefined>(undefined)
 
-export const AddressContextProvider = ({ children }: AddressContextProps) => {
-  const ok = { countries: ['BRA', 'ARG', 'ZZZ'] }
+export const AddressContextProvider = ({
+  children,
+  address,
+  countries,
+}: AddressContextProps) => {
+  const state = { countries: countries, address: address }
 
   return (
-    <AddressContextContext.Provider value={ok}>
+    <AddressContextContext.Provider value={state}>
       {children}
     </AddressContextContext.Provider>
   )

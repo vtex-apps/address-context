@@ -5291,6 +5291,18 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+"vtex.checkout-graphql@http://vtex.vteximg.com.br/_v/public/typings/v1/vtex.checkout-graphql@0.20.2/public/@types/vtex.checkout-graphql":
+  version "0.20.2"
+  resolved "http://vtex.vteximg.com.br/_v/public/typings/v1/vtex.checkout-graphql@0.20.2/public/@types/vtex.checkout-graphql#bea9e462fba778c0c384ad3b032752164709791a"
+
+"vtex.order-manager@http://vtex.vteximg.com.br/_v/public/typings/v1/vtex.order-manager@0.6.9/public/@types/vtex.order-manager":
+  version "0.6.9"
+  resolved "http://vtex.vteximg.com.br/_v/public/typings/v1/vtex.order-manager@0.6.9/public/@types/vtex.order-manager#1347d65b9e85e20240dfe1230cf0728e2a729e02"
+
+"vtex.render-runtime@http://vtex.vteximg.com.br/_v/public/typings/v1/vtex.render-runtime@8.89.0/public/@types/vtex.render-runtime":
+  version "8.89.0"
+  resolved "http://vtex.vteximg.com.br/_v/public/typings/v1/vtex.render-runtime@8.89.0/public/@types/vtex.render-runtime#52ba790ad82c60a33e43951a85172db5d11a394d"
+
 w3c-hr-time@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/w3c-hr-time/-/w3c-hr-time-1.0.1.tgz#82ac2bff63d950ea9e3189a58a65625fedf19045"
