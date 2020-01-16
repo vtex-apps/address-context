@@ -11,10 +11,10 @@ interface AddressContextProps {
 const AddressContextContext = createContext<Context | undefined>(undefined)
 
 export const AddressContextProvider = ({ children }: AddressContextProps) => {
-  const ok = { countries: ['BRA', 'ARG'] }
+  const ok = { countries: ['BRA', 'ARG', 'ZZZ'] }
 
   return (
-    <AddressContextContext.Provider value={{ ok }}>
+    <AddressContextContext.Provider value={ok}>
       {children}
     </AddressContextContext.Provider>
   )
