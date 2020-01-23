@@ -29,5 +29,5 @@
     "vtex.checkout-graphql": "http://vtex.vteximg.com.br/_v/public/typings/v1/vtex.checkout-graphql@0.20.2/public/@types/vtex.checkout-graphql",
     "vtex.order-manager": "http://vtex.vteximg.com.br/_v/public/typings/v1/vtex.order-manager@0.6.9/public/@types/vtex.order-manager"
   },
-  "version": "0.2.2"
+  "version": "0.0.2"
 }

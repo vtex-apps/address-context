@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.0.2] - 2020-01-23
+
 ### Added
 
 - First working version of orchestrator, providing `address`, `setAddress`, and countries.
