@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "address-context",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "title": "Address Context",
   "description": "Address Context",
   "defaultLocale": "pt-BR",
