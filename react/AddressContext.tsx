@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useState, useMemo } from 'react'
 import { Address } from 'vtex.checkout-graphql'
 
+type AddressUpdate = Address | ((prevAddress: Address) => Address)
+
 interface Context {
   countries: string[]
   address: Address
-  setAddress: (address: Address) => void
+  setAddress: (address: AddressUpdate) => void
 }
 
 interface AddressContextProps {

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Type of `setAddress` function to allow function.
+
 ## [0.0.3] - 2020-03-10
 
 ### Changed
