@@ -1,22 +1,16 @@
 {
-  "scripts": {
-    "test": "vtex-test-tools test"
-  },
+  "name": "vtex.address-context",
+  "private": true,
+  "version": "0.0.4",
   "dependencies": {
     "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-intl": "^2.7.2"
+    "react-dom": "^16.8.3"
   },
   "devDependencies": {
-    "@types/classnames": "^2.2.7",
-    "@types/jest": "^24.0.18",
     "@types/node": "^12.7.5",
-    "@types/prop-types": "^15.7.0",
     "@types/react": "^16.9.2",
-    "@vtex/test-tools": "^1.1.0",
     "vtex.checkout-graphql": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-graphql@0.25.1/public/@types/vtex.checkout-graphql",
     "vtex.order-manager": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.order-manager@0.8.2/public/@types/vtex.order-manager",
     "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.94.0/public/@types/vtex.render-runtime"
-  },
-  "version": "0.0.4"
+  }
 }
