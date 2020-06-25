@@ -25,7 +25,7 @@ export const AddressContextProvider: React.FC<AddressContextProps> = ({
   children,
   address,
   countries,
-  rules,
+  rules = {},
 }) => {
   const [localAddress, setLocalAddress] = useState(address)
 
