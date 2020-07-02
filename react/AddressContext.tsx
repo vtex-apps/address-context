@@ -11,6 +11,7 @@ interface Context {
   setAddress: (address: AddressUpdate) => void
   rules: AddressRules
   isValid: boolean
+  invalidFields: AddressFields[]
 }
 
 interface AddressContextProps {
@@ -29,31 +30,41 @@ export const AddressContextProvider: React.FC<AddressContextProps> = ({
 }) => {
   const [localAddress, setLocalAddress] = useState(address)
 
+  const invalidFields = useMemo(() => {
+    if (!localAddress?.country || !rules[localAddress.country]) {
+      return []
+    }
+
+    return (Object.entries(rules[localAddress.country].fields) as Array<
+      [AddressFields, Field]
+    >)
+      .filter(([field, fieldSchema]) => {
+        const fieldValue = localAddress[field]
+
+        if (fieldSchema.required && !fieldValue) {
+          return true
+        }
+
+        if (
+          fieldSchema.maxLength &&
+          fieldValue &&
+          fieldValue.length > fieldSchema.maxLength
+        ) {
+          return true
+        }
+
+        return false
+      })
+      .map(([field]) => field)
+  }, [localAddress, rules])
+
   const isValid = useMemo(() => {
-    if (!address?.country || !rules[address.country]) {
+    if (!localAddress?.country || !rules[localAddress.country]) {
       return false
     }
 
-    for (const [field, fieldSchema] of Object.entries(
-      rules[address.country].fields
-    ) as Array<[AddressFields, Field]>) {
-      const fieldValue = address[field]
-
-      if (fieldSchema.required && !fieldValue) {
-        return false
-      }
-
-      if (
-        fieldSchema.maxLength &&
-        fieldValue &&
-        fieldValue.length > fieldSchema.maxLength
-      ) {
-        return false
-      }
-    }
-
-    return true
-  }, [address, rules])
+    return invalidFields.length === 0
+  }, [localAddress, rules, invalidFields])
 
   const state = useMemo(
     () => ({
@@ -62,8 +73,9 @@ export const AddressContextProvider: React.FC<AddressContextProps> = ({
       setAddress: setLocalAddress,
       rules,
       isValid,
+      invalidFields,
     }),
-    [countries, localAddress, rules, isValid]
+    [countries, localAddress, rules, isValid, invalidFields]
   )
 
   return (
