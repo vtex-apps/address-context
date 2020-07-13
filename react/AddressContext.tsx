@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState, useMemo } from 'react'
 import { Address } from 'vtex.checkout-graphql'
 
-import { AddressRules, Field, AddressFields } from './types'
+import { AddressRules, AddressFields } from './types'
+import { validateAddress } from './Utils'
 
 type AddressUpdate = Address | ((prevAddress: Address) => Address)
 
@@ -30,41 +31,10 @@ export const AddressContextProvider: React.FC<AddressContextProps> = ({
 }) => {
   const [localAddress, setLocalAddress] = useState(address)
 
-  const invalidFields = useMemo(() => {
-    if (!localAddress?.country || !rules[localAddress.country]) {
-      return []
-    }
-
-    return (Object.entries(rules[localAddress.country].fields) as Array<
-      [AddressFields, Field]
-    >)
-      .filter(([field, fieldSchema]) => {
-        const fieldValue = localAddress[field]
-
-        if (fieldSchema.required && !fieldValue) {
-          return true
-        }
-
-        if (
-          fieldSchema.maxLength &&
-          fieldValue &&
-          fieldValue.length > fieldSchema.maxLength
-        ) {
-          return true
-        }
-
-        return false
-      })
-      .map(([field]) => field)
-  }, [localAddress, rules])
-
-  const isValid = useMemo(() => {
-    if (!localAddress?.country || !rules[localAddress.country]) {
-      return false
-    }
-
-    return invalidFields.length === 0
-  }, [localAddress, rules, invalidFields])
+  const { invalidFields, isValid } = useMemo(
+    () => validateAddress(localAddress, rules),
+    [localAddress, rules]
+  )
 
   const state = useMemo(
     () => ({
