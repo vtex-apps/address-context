@@ -35,6 +35,7 @@ export interface Field {
    */
   mask?: string
   additionalData?: PostalCodeData | null
+  pattern?: string
 }
 
 export interface Display {
@@ -67,4 +68,6 @@ export interface CountryRules {
   locationSelect?: LocationSelect
 }
 
-export type AddressRules = { [key: string]: CountryRules }
+export interface AddressRules {
+  [key: string]: CountryRules
+}

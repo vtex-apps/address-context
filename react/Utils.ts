@@ -31,6 +31,10 @@ export const validateAddress = (
         return true
       }
 
+      if (fieldSchema.pattern) {
+        return fieldValue?.match(fieldSchema.pattern) === null
+      }
+
       return false
     })
     .map(([field]) => field)
