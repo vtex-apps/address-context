@@ -4,11 +4,11 @@ import { Address } from 'vtex.checkout-graphql'
 import { AddressRules, AddressFields } from './types'
 import { validateAddress } from './Utils'
 
-type AddressUpdate = Address | ((prevAddress: Address) => Address)
+type AddressUpdate = Address | null | ((prevAddress: Address | null) => Address)
 
 interface Context {
   countries: string[]
-  address: Address
+  address: Address | null
   setAddress: (address: AddressUpdate) => void
   rules: AddressRules
   isValid: boolean
@@ -16,7 +16,7 @@ interface Context {
 }
 
 interface AddressContextProps {
-  address: Address
+  address: Address | null
   countries: string[]
   rules: AddressRules
 }
