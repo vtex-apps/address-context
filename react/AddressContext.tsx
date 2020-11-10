@@ -2,13 +2,13 @@ import React, { createContext, useContext, useState, useMemo } from 'react'
 import { Address } from 'vtex.checkout-graphql'
 
 import { AddressRules, AddressFields } from './types'
-import { validateAddress } from './Utils'
+import { validateAddress, createEmptyAddress } from './Utils'
 
-type AddressUpdate = Address | null | ((prevAddress: Address | null) => Address)
+type AddressUpdate = Address | ((prevAddress: Address) => Address)
 
 interface Context {
   countries: string[]
-  address: Address | null
+  address: Address
   setAddress: (address: AddressUpdate) => void
   rules: AddressRules
   isValid: boolean
@@ -29,7 +29,9 @@ export const AddressContextProvider: React.FC<AddressContextProps> = ({
   countries,
   rules = {},
 }) => {
-  const [localAddress, setLocalAddress] = useState(address)
+  const [localAddress, setLocalAddress] = useState(
+    () => address ?? createEmptyAddress()
+  )
 
   const { invalidFields, isValid } = useMemo(
     () => validateAddress(localAddress, rules),

@@ -1,4 +1,4 @@
-import { Address } from 'vtex.checkout-graphql'
+import { Address, AddressType } from 'vtex.checkout-graphql'
 
 import { AddressFields, AddressRules, Field } from './types'
 
@@ -9,7 +9,18 @@ export const validateAddress = (
   if (!address?.country || !rules[address.country]) {
     return {
       isValid: false,
-      invalidFields: [],
+      invalidFields: [
+        'number',
+        'postalCode',
+        'city',
+        'complement',
+        'reference',
+        'neighborhood',
+        'state',
+        'country',
+        'receiverName',
+        'street',
+      ] as AddressFields[],
     }
   }
 
@@ -17,6 +28,10 @@ export const validateAddress = (
     [AddressFields, Field]
   >)
     .filter(([field, fieldSchema]) => {
+      if (field === 'isDisposable') {
+        return false
+      }
+
       const fieldValue = address[field]
 
       if (fieldSchema.required && !fieldValue) {
@@ -45,4 +60,23 @@ export const validateAddress = (
   }
 }
 
-export default { validateAddress }
+export const createEmptyAddress = (disposable = false): Address => {
+  return {
+    addressId: null,
+    addressType: 'residential' as AddressType,
+    geoCoordinates: [],
+    number: null,
+    postalCode: null,
+    city: null,
+    complement: null,
+    reference: null,
+    neighborhood: null,
+    state: null,
+    country: null,
+    receiverName: null,
+    street: null,
+    isDisposable: disposable,
+  }
+}
+
+export default { validateAddress, createEmptyAddress }
