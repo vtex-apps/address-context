@@ -1,7 +1,7 @@
 {
   "name": "vtex.address-context",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "dependencies": {
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
