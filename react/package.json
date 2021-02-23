@@ -1,7 +1,7 @@
 {
   "name": "vtex.address-context",
   "private": true,
-  "version": "0.6.1",
+  "version": "0.6.2",
   "dependencies": {
     "react": "^16.8.3",
     "react-apollo": "^3.1.5",
