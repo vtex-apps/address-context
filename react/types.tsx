@@ -1,4 +1,4 @@
-import { Address } from 'vtex.checkout-graphql'
+import type { Address } from 'vtex.checkout-graphql'
 import type {
   AddressFieldsData,
   DisplayData,
